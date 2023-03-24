@@ -20,7 +20,18 @@
 // item.style.fontWeight = 'bold';
 // item.style.color = 'green';
 var items = document.getElementsByClassName('list-group-item');
-items[0].style.backgroundColor = 'red';
-items[1].style.backgroundColor = 'red';
-items[2].style.backgroundColor = 'red';
-items[3].style.fontWeight = 'bold';
+// items[0].style.backgroundColor = 'red';
+// items[1].style.backgroundColor = 'red';
+// items[2].style.backgroundColor = 'red';
+// items[3].style.fontWeight = 'bold';
+
+//getElementbytagName
+var li = document.getElementsByTagName('li');
+console.log(li);
+li[2].textContent = 'hello Web dev';
+// items.style.backgroundColor = 'red';
+
+for(var i=0;i<li.length;i++){
+    li[i].style.backgroundColor = 'red';
+}
+
