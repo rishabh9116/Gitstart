@@ -14,8 +14,13 @@
 // console.log(document.links);
 // console.log(document.images);   
 // console.log(document.getElementById('header-title'));
-var header = document.getElementById('main-header');
-header.style.borderBottom = 'solid 3px #000';
-var item = document.querySelector('.title');
-item.style.fontWeight = 'bold';
-item.style.color = 'green';
+// var header = document.getElementById('main-header');
+// header.style.borderBottom = 'solid 3px #000';
+// var item = document.querySelector('.title');
+// item.style.fontWeight = 'bold';
+// item.style.color = 'green';
+var items = document.getElementsByClassName('list-group-item');
+items[0].style.backgroundColor = 'red';
+items[1].style.backgroundColor = 'red';
+items[2].style.backgroundColor = 'red';
+items[3].style.fontWeight = 'bold';
