@@ -46,11 +46,65 @@ var items = document.getElementsByClassName('list-group-item');
 // lastItem.style.color = 'blue';
 // var secondItem = document.querySelector('.list-group-item:nth-child(2)');
 // secondItem.style.color = 'red';
-var it = document.querySelectorAll('.list-group-item');
-it[1].style.color = 'green';
+// var it = document.querySelectorAll('.list-group-item');
+// it[1].style.color = 'green';
 
-var odd = document.querySelectorAll('.list-group-item:nth-child(odd)');
-for(var i=0;i<odd.length;i++){
-    odd[i].style.backgroundColor = 'green';
-}
+// var odd = document.querySelectorAll('.list-group-item:nth-child(odd)');
+// for(var i=0;i<odd.length;i++){
+//     odd[i].style.backgroundColor = 'green';
+//}
+
+
+//TRAVERSING THE DOM
+var itemList = document.querySelector('#items');
+//parent node
+
+// itemList.parentNode.style.backgroundColor = '#f4f4f4';
+// console.log(itemList.parentNode.parentNode.parentNode.parentNode.parentNode);
+//  itemList.parentElement.style.backgroundColor = '#f4f4f4';
+//  console.log(itemList.parentElement.parentElement.parentElement);
+
+//childNodes
+// console.log(itemList.childNodes);
+
+// console.log(itemList.children);
+// console.log(itemList.children[1]);
+// itemList.children[1].style.backgroundColor = 'yellow';
+// // console.log(itemList.firstChild);
+
+// console.log(itemList.firstElementChild);
+// itemList.firstElementChild.textContent = 'Hello 1';
+// console.log(itemList.lastElementChild);
+//  itemList.lastElementChild.textContent = 'Hello 4';
+
+//next sibling
+// console.log(itemList.nextSibling);
+// console.log(itemList.nextElementSibling);
+
+//previous sibling
+
+// console.log(itemList.previousElementSibling);
+// itemList.previousElementSibling.style.color = 'green';
+
+//CREATE ELEMENT
+var myDiv = document.createElement('div');
+myDiv.className='hello';
+myDiv.id='hello-1';
+//add attribute
+myDiv.setAttribute('title','Hello mere Div');
+//create text node
+var myDivText =  document.createTextNode('Hello World');
+//add text to div
+myDiv.appendChild(myDivText);
+var conta = document.querySelector('.container');
+var h1 = document.querySelector('h1');
+console.log(myDiv);
+
+conta.insertBefore(myDiv, h1);
+
+let ul = document.querySelector('ul');
+let li = document.querySelector('ul li');
+ul.insertBefore(myDiv, li);
+
+
 
