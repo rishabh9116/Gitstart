@@ -47,7 +47,7 @@
       localStorage.setItem(s,u);
    var ul = document.querySelector('ul');
    var li = document.createElement('li');
-   li.appendChild(document.createTextNode(u));
+   li.appendChild(document.createTextNode(name+"-"+email+"-"+phone));
    ul.appendChild(li);
     }
 
