@@ -47,9 +47,30 @@
       localStorage.setItem(s,u);
    var ul = document.querySelector('ul');
    var li = document.createElement('li');
+   //Creating delete button
+   var deleteBtn = document.createElement('button');
+   deleteBtn.value = "Delete";
+   deleteBtn.appendChild(document.createTextNode("Delete"));
    li.appendChild(document.createTextNode(name+"-"+email+"-"+phone));
+   li.id = s;
+   li.appendChild(deleteBtn);
    ul.appendChild(li);
+   
+  
     }
+
+
+  document.addEventListener('click',removeUser);
+  function removeUser(e) {
+  if(e.target.value=="Delete"){
+    var list = e.target.parentElement.parentElement;
+    var item =  e.target.parentElement;
+    var ID = item.id;
+    list.removeChild(item);
+   localStorage.removeItem(ID);
+  }
+
+  }
 
 
 //     let myObj = {
