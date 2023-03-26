@@ -43,11 +43,12 @@
         Contact:phone
     };
     let u = JSON.stringify(userDetails);
-      localStorage.setItem("userDetails",u);
-    // localStorage.setItem("name",name);
-    // localStorage.setItem("email",email);
-    // localStorage.setItem("Phone",phone);
-    // console.log(name  + " "+email  + " "+ phone);
+    let s = email;
+      localStorage.setItem(s,u);
+   var ul = document.querySelector('ul');
+   var li = document.createElement('li');
+   li.appendChild(document.createTextNode(u));
+   ul.appendChild(li);
     }
 
 

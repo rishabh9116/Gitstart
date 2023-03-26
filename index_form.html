@@ -7,34 +7,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Form</title>
     <style>
-        label {
-            display: block;
+        label
+        {
+            display: inline-block;
         }
 
-       
+        #sub {
+            margin-left: 12px;
+            display: inline-block;
+        }
     </style>
 </head>
 
 <body>
     <h1>Contact Form</h1>
-    
-    <form action="#" onsubmit="UserReg()">
-        <div id="msg"></div>
-        <label for="name"><b>Name</b> </label>
-            <input type="text" id="name" placeholder="Enter Your Name" class="contactForm"> 
-        <label for="email"><b>Email</b></label> <input type="text" id="email" placeholder="Enter Your Email" class="contactForm"> 
-        <label for="contact"><b>Phone</b> </label><input type="text" id="contact" placeholder="Enter Your Number" class="contactForm">
-        
-        <label for="time for call"><b>Time for call</b></label>
-        <input type="date" id="date"> <input type="time" id="time">
-        <br>
-        <br>
-        <input type="submit" name="submit" value="Submit" id="sub">  
-    
-</form>
-    
 
-<script src="index.js"></script>
+    <form action="#" onsubmit="UserReg()">
+
+        <label for="name"><b>Name</b> <input type="text" id="name" placeholder="Enter Your Name" class="contactForm">
+        </label>
+        <label for="email"><b>Email</b> <input type="text" id="email" placeholder="Enter Your Email"
+                class="contactForm"> </label>
+        <label for="contact"><b>Phone</b> <input type="text" id="contact" placeholder="Enter Your Number"
+                class="contactForm"></label>
+        
+        <input type="submit" name="submit" value="Submit" id="sub">
+    </form>
+
+<ul>
+    
+</ul>
+    <script src="index.js"></script>
 </body>
 
 </html>
