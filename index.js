@@ -49,11 +49,15 @@
    var li = document.createElement('li');
    //Creating delete button
    var deleteBtn = document.createElement('button');
+   var editBtn = document.createElement('button');
    deleteBtn.value = "Delete";
+   editBtn.value  = "Edit";
    deleteBtn.appendChild(document.createTextNode("Delete"));
+   editBtn.appendChild(document.createTextNode("Edit"));
    li.appendChild(document.createTextNode(name+"-"+email+"-"+phone));
    li.id = s;
    li.appendChild(deleteBtn);
+   li.appendChild(editBtn);
    ul.appendChild(li);
    
   
@@ -72,6 +76,25 @@
 
   }
 
+  document.addEventListener('click',EditUser);
+
+function EditUser(e) {
+    if(e.target.value=="Edit"){
+        var list = e.target.parentElement.parentElement;
+        var item =  e.target.parentElement;
+        var ID = item.id;
+        //Deserialization
+        var Obj = JSON.parse(localStorage.getItem(ID));
+        var Name = document.querySelector('#name');
+        var Email = document.querySelector('#email');
+        var Contact = document.querySelector('#contact');
+        Name.value = Obj.name;
+        Email.value = Obj.emailId;
+        Contact.value = Obj.Contact;
+        list.removeChild(item);
+       localStorage.removeItem(ID);
+      }
+}
 
 //     let myObj = {
 //         naam:"Rishbah",
