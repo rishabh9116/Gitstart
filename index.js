@@ -32,13 +32,30 @@
 
 
 
-    function UserReg(e) {
+    function UserReg() {
     //  e.target.preventDefault();
     const name = document.querySelector('#name').value;
     const email = document.querySelector('#email').value;
     const phone = document.querySelector('#contact').value;
-    localStorage.setItem("name", name);
-    localStorage.setItem("email", email);
-    localStorage.setItem("phone", phone);
+    let userDetails = {
+        name:name,
+        emailId:email,
+        Contact:phone
+    };
+    let u = JSON.stringify(userDetails);
+      localStorage.setItem("userDetails",u);
+    // localStorage.setItem("name",name);
+    // localStorage.setItem("email",email);
+    // localStorage.setItem("Phone",phone);
     // console.log(name  + " "+email  + " "+ phone);
     }
+
+
+//     let myObj = {
+//         naam:"Rishbah",
+//         phone : 12344,
+//     };
+// let myObj_serialized = JSON.stringify(myObj);
+//     localStorage.setItem("myObj", myObj_serialized);
+//      let myObj_deserialized = JSON.parse(localStorage.getItem("myObj"));
+   
