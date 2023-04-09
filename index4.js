@@ -5,6 +5,21 @@ function addTodo(e) {
 if(e.target.id==="add-item") {
     const todoName = document.querySelector('#todo-name').value;
     const description = document.querySelector('#description').value;
+   
+    const obj = {
+      todoName,
+      description
+    }
+
+
+  axios.post("https://crudcrud.com/api/293faf41e1f442199d3cb36bd38f3e53/todoData",obj)
+  .then((flag) => {
+ flag = true;
+  })
+
+  .catch((err=>{
+    console.log(err);
+  }))
 
     var ul = document.querySelector('#todos-remaining');
     var li = document.createElement('li');
