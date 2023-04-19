@@ -3,7 +3,7 @@ import './App.css';
 import ExpenseItem from './Components/Expenses/ExpenseItem';
 import Expenses from './Components/Expenses/Expenses';
 import ExpenseForm from './Components/Expenses/ExpenseForm';
-
+import NewExpense from './Components/Expenses/NewExpense';
 function App() {
   const expenses =[
   {id:'e1',
@@ -34,8 +34,8 @@ function App() {
 ];
   return (
     <div className="App">
-     <Expenses items={expenses}/>
-     <ExpenseForm title={expenses[0].title} amount={expenses[0].amount} date={expenses[0].date} />
+    <NewExpense />
+    <Expenses  items={expenses} />
     </div>
   );
 }
