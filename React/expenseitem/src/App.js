@@ -1,11 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 import ExpenseItem from './Components/Expenses/ExpenseItem';
 import Expenses from './Components/Expenses/Expenses';
 import ExpenseForm from './Components/Expenses/ExpenseForm';
 import NewExpense from './Components/Expenses/NewExpense';
-function App() {
-  const expenses =[
+
+  const DUMMY_EXPENSES =[
   {id:'e1',
    title: 'Toilet Paper',
    amount: 294.67,
@@ -33,9 +34,15 @@ function App() {
   
 ];
 
+const App = () => {
+const[expenses,setExpenses] =  useState(DUMMY_EXPENSES);
+
 const addExpenseHandler = (expense) => {
-console.log('In App.js');
-console.log(expenses);
+   
+  setExpenses((prevExpenses) => {
+    return [expense , ...prevExpenses];
+  });
+
 };
 
   return (

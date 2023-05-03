@@ -21,17 +21,17 @@ function changeAmountHandler() {
   setAmount(100);
 }
   return (
-    <Card className='expense-item'>
+   <div>
 
      <ExpenseDate date ={props.date} />
 
      {/* <ExpenseDetails amount={props.amount}  location={props.location}   title={props.title} /> */}
-    <div >{title}</div> 
-    <div>${amount}</div>
+    <div >{props.title}</div> 
+    <div>${props.amount}</div>
      <button onClick={clickHandler}>Change Title</button>
      <button onClick={deleteHandler}>Delete Expense</button>
      <button onClick={changeAmountHandler}>Change amount</button>
-  </Card>
+  </div>
   )
 }
 
