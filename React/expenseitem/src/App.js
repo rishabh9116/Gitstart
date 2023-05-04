@@ -10,7 +10,7 @@ import NewExpense from './Components/Expenses/NewExpense';
   {id:'e1',
    title: 'Toilet Paper',
    amount: 294.67,
-   date:new Date(2021,8,19),
+   date:new Date(2020,8,19),
    location: 'Delhi'
   },
   {id:'e2',
