@@ -26,8 +26,8 @@ function changeAmountHandler() {
      <ExpenseDate date ={props.date} />
 
      {/* <ExpenseDetails amount={props.amount}  location={props.location}   title={props.title} /> */}
-    <div >{props.title}</div> 
-    <div>${props.amount}</div>
+    <div >{title}</div> 
+    <div>${amount}</div>
      <button onClick={clickHandler}>Change Title</button>
      <button onClick={deleteHandler}>Delete Expense</button>
      <button onClick={changeAmountHandler}>Change amount</button>
