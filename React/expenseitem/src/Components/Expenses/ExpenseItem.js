@@ -3,7 +3,7 @@ import './ExpenseItem.css'
 import Card from '../UI/Card'
 import ExpenseDate from './ExpenseDate.js'
 import ExpenseDetails from './ExpenseDetails'
-
+import './ExpenseItem.css'
 
 const ExpenseItem = (props) => {
   const [title, setTitle] = useState(props.title);
