@@ -71,9 +71,9 @@ const Login = (props) => {
 
   const emailChangeHandler = (event) => {
     dispatchEmail({type:'USER_INPUT', val:event.target.value})
-    setFormIsValid(
-      event.target.value.includes('@') && passwordState.isValid && enteredCollege > 0
-    );
+    // setFormIsValid(
+    //   event.target.value.includes('@') && passwordState.isValid && enteredCollege > 0
+    // );
   };
 
   
