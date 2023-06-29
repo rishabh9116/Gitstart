@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
-
+let sum = 0;
 const Products = (props) => {
     const [productId, setProductId] = useState(null);
     const [sellingPrice, setSellingPrice] = useState(null);
     const [productName, setProductName] = useState(null);
     const [list,setList] = useState([]);
-    // const [worth,setWorth] = useState(0);
+     // const [worth,setWorth] = useState(0);
  
- 
+
 const submitHandler = (event) => {
   event.preventDefault();
   console.log("submit button clicked");
@@ -18,20 +18,25 @@ const submitHandler = (event) => {
   }
  
  
+ sum += Number(sellingPrice);
   localStorage.setItem(productId , JSON.stringify(product));
   if(productId){
     setList([...list,product]);
+
   }
  
-
 }
 
 
-const delhandler = (e) => {
+const delhandler = (e) => {    
+    localStorage.removeItem(e.target.id);
+    for(let i=0;i<list.length;i++){
+        if(list[i].productId===e.target.id){
+            sum -= Number(list[i].sellingPrice);
+        }
+    }
 setList(list.filter((item)=> item.productId!==e.target.id));
 
-
-localStorage.removeItem(e.target.id);
 }
 
     return (
@@ -78,7 +83,7 @@ localStorage.removeItem(e.target.id);
                 }
             </div>
             <div>
-               <h1> Total Value Worth of Products:Rs 0</h1>
+               <h1> Total Value Worth of Products:Rs {sum} </h1>
             </div>
 
         </div>
