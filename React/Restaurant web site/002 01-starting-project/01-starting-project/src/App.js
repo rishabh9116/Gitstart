@@ -8,6 +8,9 @@ function App() {
       <main>
         <Meals />
       </main>
+      <footer>
+      
+      </footer>
     </Fragment>
   );
 }
