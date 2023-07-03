@@ -2,7 +2,8 @@ import Header from "./components/Layout/Header";
 import React,{ Fragment, useState } from "react";
 import Meals from "./components/Meals/Meals";
 import Cart from "./components/Cart/Cart";
-import { CartContext,CartProvider } from "./store/CartContext";
+import CartProvider from "./store/CartProvider";
+
 
 
 

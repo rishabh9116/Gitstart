@@ -2,16 +2,17 @@ import React, { useContext, useState } from 'react'
 import CartIcon from '../Cart/CartIcon'
 import classes from './HeaderCartButton.module.css'
 import AvailableMeals from '../Meals/AvailableMeals'
-import CartContext from '../../store/CartContext'
+import CartContext from '../../store/cart-context'
+
 
 const HeaderCartButton = (props) => {
    const cartCtx = useContext(CartContext);
   
-  //  const numberOfCartItems = cartCtx.items.reduce((curNumber, cartItem)=>{
-  //   return curNumber + cartItem;
-  //  },0);
+   const numberOfCartItems = cartCtx.items.reduce((curNumber, item)=>{
+    return curNumber + item.amount;
+   },0);
 
- const numberOfCartItems = cartCtx.items.length;
+//  const numberOfCartItems = cartCtx.items.length;
 
    console.log("In HeaderCartButton  Cart Items ", numberOfCartItems);
   return (
