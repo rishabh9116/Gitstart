@@ -6,7 +6,7 @@ import Header from './components/Header';
 import Products from './components/Products';
 import { useState  } from 'react';
 import Cart from './components/Cart';
-
+import CartProvider from './store/CartProvider';
 
 let App=()=> {
   const [cartIsShown,setCartIsShown] = useState(false);
@@ -20,11 +20,11 @@ let App=()=> {
     setCartIsShown(true);
   }
   return (
-    <>
+    <CartProvider>
     <NavBar onShowCart={showCartHandler} />
-    { cartIsShown && <Cart onclose= {hideCartHandler} />}
+    { cartIsShown && <Cart onClose= {hideCartHandler} />}
     <Products />
-    </>
+    </CartProvider>
   );
 }
 

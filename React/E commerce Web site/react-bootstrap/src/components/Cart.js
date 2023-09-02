@@ -1,5 +1,6 @@
-import React from 'react'
+import React ,{useContext} from 'react'
 import CartItem from './CartItem'
+import CartContext from '../store/cart-context'
 
 
 const cartElements = [
@@ -41,18 +42,46 @@ const cartElements = [
     }
     
     ]
-const Cart = () => {
-    const cartElementsList = cartElements.map((cartElement)=>
-     <CartItem 
-     title = {cartElement.title} 
-     price={cartElement.price} 
-     imageUrl={cartElement.imageUrl} 
-     quantity = {cartElement.quantity}
-     />
-    )
+const Cart = (props) => {
+  const cartCtx = useContext(CartContext);
+
+  const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
+  const hasItems = cartCtx.items.length > 0;
+
+  const cartItemRemoveHandler = (id) => {
+    cartCtx.removeItem(id);
+  };
+
+  const cartItemAddHandler = (item) => {
+    cartCtx.addItem({...item,amount:1});
+  };
+
+    const cartItems = (
+      <ul>
+       
+    { cartCtx.items.map((item)=>
+    <CartItem 
+    title = {item.title} 
+    price={item.price} 
+    imageUrl={item.imageUrl}
+     
+    />
+   )
+       }
+      </ul>
+    );
+
+  
   return (
     <div>
-       <ul>{cartElementsList}</ul>
+      <div>
+      {cartItems}
+      </div>
+      
+      <div>
+        <button onClick={props.onClose}>X</button>
+      </div>
+
     </div>
   )
 }

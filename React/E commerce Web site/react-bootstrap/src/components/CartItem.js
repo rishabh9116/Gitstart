@@ -3,13 +3,12 @@ import { Button } from 'react-bootstrap'
 
 
 
-const CartItem = ({title,imageUrl,price,quantity}) => {
+const CartItem = ({title,imageUrl,price}) => {
   return (
-    <div className=''>
+    <div>
         <span> <img src={imageUrl} /> </span>
         <span> {title} </span>
         <span> {price} </span>
-        <span> {quantity} </span>
         <span>
             <Button>REMOVE</Button>
         </span>
