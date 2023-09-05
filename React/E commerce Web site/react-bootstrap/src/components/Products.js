@@ -1,5 +1,6 @@
 import React from 'react'
 import ProductItem from './ProductItem'
+import Card from './UI/Card';
 const productsArr = [
 
     {
@@ -48,7 +49,10 @@ const productsArr = [
 const Products = () => {
 
   return (
-    <div>
+    <div style={{
+      display:"flex",
+      flexWrap:"wrap"
+    }}>
         {
             productsArr.map(({title,price,imageUrl})=>{
                 return <ProductItem title = {title} imageUrl = {imageUrl} price={price} />;

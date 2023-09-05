@@ -1,7 +1,7 @@
 import React ,{useContext} from 'react'
 import CartItem from './CartItem'
 import CartContext from '../store/cart-context'
-
+import Modal from './UI/Modal'
 
 const cartElements = [
 
@@ -56,34 +56,43 @@ const Cart = (props) => {
     cartCtx.addItem({...item,amount:1});
   };
 
-    const cartItems = (
-      <ul>
-       
-    { cartCtx.items.map((item)=>
+   
+  
+  return (
+    <Modal>
+      <div style={{display:"flex",justifyContent:"space-between"}}>
+      <h1 style={{fontFamily:"sans-serif"}}>My Cart</h1>
+      <button onClick={props.onClose}>X</button>
+      </div>
+      
+      <div>
+      {cartCtx.items.map((item)=>
     <CartItem 
     title = {item.title} 
     price={item.price} 
     imageUrl={item.imageUrl}
      
     />
-   )
-       }
-      </ul>
-    );
-
-  
-  return (
-    <div>
-      <div>
-      {cartItems}
+   )}
       </div>
       
-      <div>
-        <button onClick={props.onClose}>X</button>
+      <div style={{ display:"flex",
+        justifyContent:"center",}}>
+      <button style={{
+       
+        fontFamily:"sans-serif",
+        fontSize:"25px",
+        backgroundColor:"aqua"
+        }}>
+        PURCHASE
+      </button>
       </div>
+     
+      
+    
 
-    </div>
+    </Modal>
   )
 }
 
-export default Cart
+export default Cart;

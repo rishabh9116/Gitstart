@@ -1,7 +1,7 @@
 import React ,{useContext} from 'react';
 import { Button } from 'react-bootstrap';
 import CartContext from '../store/cart-context';
-
+import Card from './UI/Card';
 
 const ProductItem = ({title,price,imageUrl}) => {
   
@@ -17,16 +17,34 @@ const ProductItem = ({title,price,imageUrl}) => {
   }
 
   return (
-    <div>
-     <div>{title}</div>
+    <Card>
+     <div style={{
+      fontFamily:"sans-serif",
+      display:"flex",
+      justifyContent:"center",
+      alignItems:"center"
+     }}><h2>{title}</h2></div>
     <div>
         <img src={imageUrl} />
     </div>
-     <div>
-        <span>{price}</span>
-        <Button> <button onClick={clickHandler}>ADD TO CART</button></Button>
+     <div style={{
+      display:"flex",
+      justifyContent:"space-between",
+      alignItems:"center",
+      margin:"5px"
+     }}>
+        <span style={{ fontFamily:"sans-serif",
+            fontSize:"25px"}}>${price}</span>
+            
+         <button onClick={clickHandler}
+              style={{
+              fontFamily:"sans-serif",
+              fontSize:"25px",
+              backgroundColor:"aqua"
+              }}
+         >ADD TO CART</button>
      </div>
-    </div>
+    </Card>
   )
 }
 
