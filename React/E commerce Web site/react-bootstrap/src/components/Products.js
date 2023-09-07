@@ -1,65 +1,53 @@
-import React from 'react'
-import ProductItem from './ProductItem'
-import Card from './UI/Card';
+import React from "react";
+import ProductItem from "./ProductItem";
+import Card from "./UI/Card";
 const productsArr = [
+  {
+    title: "Colors",
 
-    {
-    
-    title: 'Colors',
-    
     price: 100,
-    
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
-    
-    },
-    
-    {
-    
-    title: 'Black and white Colors',
-    
+
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
+  },
+
+  {
+    title: "Black and white Colors",
+
     price: 50,
-    
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
-    
-    },
-    
-    {
-    
-    title: 'Yellow and Black Colors',
-    
+
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
+  },
+
+  {
+    title: "Yellow and Black Colors",
+
     price: 70,
-    
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
-    
-    },
-    
-    {
-    
-    title: 'Blue Color',
-    
+
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
+  },
+
+  {
+    title: "Blue Color",
+
     price: 100,
-    
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%204.png',
-    
-    }
-    
-    ];
-    
-    
+
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
+  },
+];
+
 const Products = () => {
-
   return (
-    <div style={{
-      display:"flex",
-      flexWrap:"wrap"
-    }}>
-        {
-            productsArr.map(({title,price,imageUrl})=>{
-                return <ProductItem title = {title} imageUrl = {imageUrl} price={price} />;
-            })
-        }
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+      }}
+    >
+      {productsArr.map(({ title, price, imageUrl }) => {
+        return <ProductItem title={title} imageUrl={imageUrl} price={price} />;
+      })}
     </div>
-  )
-}
+  );
+};
 
-export default Products
+export default Products;

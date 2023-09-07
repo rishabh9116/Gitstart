@@ -10,6 +10,7 @@ import { useState  } from 'react';
 import Cart from './components/Cart';
 import CartProvider from './store/CartProvider';
 import About from './components/pages/About';
+import Store from './components/pages/Store';
 
 
 
@@ -36,7 +37,7 @@ let App=()=> {
      <Routes>
       <Route path='/' element={<Home />} />
       <Route path="/about" element={<About />}></Route>
-      
+      <Route path='/store'  element={<Store />} />
      </Routes>
      </BrowserRouter>
     </CartProvider>
