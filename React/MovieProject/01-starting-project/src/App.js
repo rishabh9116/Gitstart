@@ -1,36 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import MoviesList from "./components/MoviesList";
 import "./App.css";
+import Spinner from "./components/Spinner";
 
 function App() {
-  // const dummyMovies = [
-  //   {
-  //     id: 1,
-  //     title: 'Some Dummy Movie',
-  //     openingText: 'This is the opening text of the movie',
-  //     releaseDate: '2021-05-18',
-  //   },
-  //   {
-  //     id: 2,
-  //     title: 'Some Dummy Movie 2',
-  //     openingText: 'This is the second opening text of the movie',
-  //     releaseDate: '2021-05-19',
-  //   },
-  // ];
-
+ 
   const [moviesArr, setMoviesArr] = useState([]);
+  const[isLoader,setIsLoader] = useState(false);
 
-  const fetchHandler = () => {
-    fetch("https://swapi.dev/api/films")
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setMoviesArr(data.results);
-        console.log(data.results);
-      });
+  const fetchHandler = async() => {
+    setIsLoader(true);
+  const response =   await fetch("https://swapi.dev/api/films")
+  const data = await response.json();  
+  setMoviesArr(data.results);
+      setIsLoader(false);
   };
+ 
+ 
   
   return (
     <React.Fragment>
@@ -38,6 +25,12 @@ function App() {
         <button onClick={fetchHandler}>Fetch Movies</button>
       </section>
       <section>
+        {
+          isLoader &&  <p>Loading...</p>
+        }
+       
+          
+        
         <MoviesList movies={moviesArr} />
       </section>
     </React.Fragment>
