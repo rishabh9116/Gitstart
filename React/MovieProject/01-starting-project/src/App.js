@@ -1,51 +1,59 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import MoviesList from "./components/MoviesList";
 import "./App.css";
 import Spinner from "./components/Spinner";
 var  currInterval;
+var err;
 function App() {
   const [moviesArr, setMoviesArr] = useState([]);
   const [isLoader, setIsLoader] = useState(false);
-  const [err, setErr] = useState(null);
+ 
   const[intervalStopped,setIntervalStopped] = useState(false);
 
-  const fetchHandler = async () => {
+  const fetchHandler = useCallback (async() => {
     setIsLoader(true);
-    setErr(null);
+    err = null;
     try {
-      let response = await fetch("https://swapi.dev/api/film");
+      let response = await fetch("https://swapi.dev/api/films");
       if (!response.ok) {
         throw new Error("Something went wrong");
       }
       const data = await response.json();
       setMoviesArr(data.results);
     } catch (error) {
-      setErr(error.message);
+      err = error.message;
     }
- 
-  };
+    !err && setIsLoader(false);
+  },[]);
 
   const retryCall = async() => {
     try{
-      const response = await fetch("https://swapi.dev/api/film");
+      const response = await fetch("https://swapi.dev/api/films");
       if(!response.ok){
         throw new Error("Something went wrong ...retrying");
+      } else{
+        err = null;
       }
     } catch(error){
-      setErr(error.message);
+      err = error.message;
     } 
+   
   };
+
+  if (err) {
+    currInterval = setInterval(retryCall, 1000);
+  }
  
   useEffect(() => {
-   
-    if (err) {
-      currInterval = setInterval(retryCall, 1000);
-    }
+    console.log("inside useEffect")
+    fetchHandler();
   
-  }, [err]);
+  
+  }, [fetchHandler]);
 
   const retryHandler = () => {
+    err = null;
     clearInterval(currInterval);
     setIsLoader(false);
    setIntervalStopped(true);
