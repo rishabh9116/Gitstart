@@ -3,17 +3,18 @@ import React, { useCallback, useEffect, useState } from "react";
 import MoviesList from "./components/MoviesList";
 import "./App.css";
 import Spinner from "./components/Spinner";
-var  currInterval;
-var err;
+import AddNewMovieForm from "./components/AddNewMovieForm";
+var currInterval;
+
 function App() {
   const [moviesArr, setMoviesArr] = useState([]);
   const [isLoader, setIsLoader] = useState(false);
- 
-  const[intervalStopped,setIntervalStopped] = useState(false);
+  const [err, setErr] = useState(null);
+  const [intervalStopped, setIntervalStopped] = useState(false);
 
-  const fetchHandler = useCallback (async() => {
+  const fetchHandler = useCallback(async () => {
     setIsLoader(true);
-    err = null;
+    let errr = null;
     try {
       let response = await fetch("https://swapi.dev/api/films");
       if (!response.ok) {
@@ -22,52 +23,54 @@ function App() {
       const data = await response.json();
       setMoviesArr(data.results);
     } catch (error) {
-      err = error.message;
+      setErr(error.message);
+      errr = error.message;
     }
-    !err && setIsLoader(false);
-  },[]);
+    if (!errr) {
+      setIsLoader(false);
+    }
+  }, []);
 
-  const retryCall = async() => {
-    try{
+  const retryCall = async () => {
+    try {
       const response = await fetch("https://swapi.dev/api/films");
-      if(!response.ok){
+      if (!response.ok) {
         throw new Error("Something went wrong ...retrying");
-      } else{
-        err = null;
+      } else {
+        setErr(null);
       }
-    } catch(error){
-      err = error.message;
-    } 
-   
+    } catch (error) {
+      setErr(error.message);
+    }
   };
 
-  if (err) {
+  if (err === "Something went wrong") {
     currInterval = setInterval(retryCall, 1000);
   }
- 
+
   useEffect(() => {
-    console.log("inside useEffect")
+    console.log("inside useEffect");
     fetchHandler();
-  
-  
   }, [fetchHandler]);
 
   const retryHandler = () => {
-    err = null;
+    setErr(null);
     clearInterval(currInterval);
     setIsLoader(false);
-   setIntervalStopped(true);
+    setIntervalStopped(true);
   };
 
   return (
     <React.Fragment>
       <section>
+        <AddNewMovieForm movies={moviesArr} addMovies = {setMoviesArr} />
         <button onClick={fetchHandler}>Fetch Movies</button>
         <button onClick={retryHandler}>Cancel retrying</button>
       </section>
       <section>
         {isLoader && <Spinner />}
-        {!intervalStopped ? (err && <p>{err}</p>):(<p>Retrying Stopped</p>)}
+
+        {!intervalStopped ? err && <p>{err}</p> : <p>Retrying Stopped</p>}
         <MoviesList movies={moviesArr} />
       </section>
     </React.Fragment>
