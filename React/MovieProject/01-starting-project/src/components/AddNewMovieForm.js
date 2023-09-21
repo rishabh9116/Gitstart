@@ -2,29 +2,18 @@ import React, { useState } from "react";
 
 const AddNewMovieForm = ({movies,addMovies}) => {
   const [form, setForm] = useState({
-    episode_id:"",
+   
     title: "",
     opening_Text: "",
     releaseDate: "",
   });
 
-  const handleSubmit = (event) => {
-  event.preventDefault();
+  const handleSubmit = (e) => {
+  e.preventDefault();
   console.log(form);
- addMovies(prev=>{
-  const updatedMovieArr = [...prev];
-  form.episode_id = updatedMovieArr.length+1;
-  updatedMovieArr.push({
-    episode_id:form.episode_id,
-    title:form.title,
-    release_date:form.releaseDate,
-    opening_crawl:form.opening_Text
-
-  });
-
-  return updatedMovieArr;
- })
-  }
+ addMovies(form);
+ }
+  
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="title">Title </label>
