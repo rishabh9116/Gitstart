@@ -11,6 +11,7 @@ import Cart from './components/Cart';
 import CartProvider from './store/CartProvider';
 import About from './components/pages/About';
 import Store from './components/pages/Store';
+import Contact from './components/pages/Contact';
 
 
 
@@ -38,6 +39,7 @@ let App=()=> {
       <Route path='/' element={<Home />} />
       <Route path="/about" element={<About />}></Route>
       <Route path='/store'  element={<Store />} />
+      <Route path='/contactUs' element={<Contact />}  /> 
      </Routes>
      </BrowserRouter>
     </CartProvider>

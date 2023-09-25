@@ -11,10 +11,16 @@ const NavBar = (props) => {
             {" "}
             <Link to="/">HOME</Link>{" "}
           </Navbar.Brand>
-          <Navbar.Brand><NavLink to="/store">STORE</NavLink></Navbar.Brand>
+          <Navbar.Brand>
+            <NavLink to="/store">STORE</NavLink>
+          </Navbar.Brand>
           <Navbar.Brand>
             {" "}
             <NavLink to="/about">ABOUT</NavLink>{" "}
+          </Navbar.Brand>
+          <Navbar.Brand>
+            {" "}
+            <NavLink to="/contactUs">Contact Us</NavLink>{" "}
           </Navbar.Brand>
           <Navbar.Brand>
             <NavBarCartButton onClick={props.onShowCart} />
