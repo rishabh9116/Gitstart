@@ -1,8 +1,10 @@
 import React from "react";
 import ProductItem from "./ProductItem";
 import Card from "./UI/Card";
+import { Link } from "react-router-dom";
 const productsArr = [
   {
+    id:1,
     title: "Colors",
 
     price: 100,
@@ -11,6 +13,7 @@ const productsArr = [
   },
 
   {
+    id:2,
     title: "Black and white Colors",
 
     price: 50,
@@ -19,6 +22,7 @@ const productsArr = [
   },
 
   {
+    id:3,
     title: "Yellow and Black Colors",
 
     price: 70,
@@ -27,6 +31,7 @@ const productsArr = [
   },
 
   {
+    id:4,
     title: "Blue Color",
 
     price: 100,
@@ -43,8 +48,13 @@ const Products = () => {
         flexWrap: "wrap",
       }}
     >
-      {productsArr.map(({ title, price, imageUrl }) => {
-        return <ProductItem title={title} imageUrl={imageUrl} price={price} />;
+      {productsArr.map(({ title, price, imageUrl ,id }) => {
+        return (
+          <div>
+            <ProductItem title={title} imageUrl={imageUrl} price={price} />
+            <div> <Link to={`/products/${id}`}>Details</Link> </div>
+          </div>
+        );
       })}
     </div>
   );
