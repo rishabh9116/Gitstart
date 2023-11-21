@@ -5,10 +5,12 @@ import UserProfile from "./components/Profile/UserProfile";
 import AuthPage from "./pages/AuthPage";
 import HomePage from "./pages/HomePage";
 import { BrowserRouter } from "react-router-dom";
+import { AuthContextProvider } from "./store/auth-context";
 
 function App() {
   return (
     //new app
+    <AuthContextProvider>
     <BrowserRouter>
       <Layout>
         <Routes>
@@ -18,6 +20,7 @@ function App() {
         </Routes>
       </Layout>
     </BrowserRouter>
+    </AuthContextProvider>
   );
 }
 

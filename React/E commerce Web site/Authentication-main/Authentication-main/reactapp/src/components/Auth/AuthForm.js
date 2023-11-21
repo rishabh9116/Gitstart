@@ -1,7 +1,8 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 
 import classes from "./AuthForm.module.css";
 import { json } from "react-router-dom";
+import AuthContext from "../../store/auth-context";
 
 const AuthForm = () => {
   const emailInputRef = useRef();
@@ -12,6 +13,9 @@ const AuthForm = () => {
     email: "",
     password: "",
   });
+
+  const authCtx = useContext(AuthContext);
+
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
   };
@@ -42,7 +46,7 @@ const AuthForm = () => {
 
           var data = await response.json();
           if (response.ok) {
-            console.log("response token = ", data.idToken);
+            authCtx.login(data.idToken);
           } else {
             throw new Error("Authentication failed");
           }
