@@ -1,5 +1,5 @@
 import { useContext, useRef, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import classes from "./AuthForm.module.css";
 import { json } from "react-router-dom";
 import AuthContext from "../../store/auth-context";
@@ -15,7 +15,7 @@ const AuthForm = () => {
   });
 
   const authCtx = useContext(AuthContext);
-
+  const navigate = useNavigate();
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
   };
@@ -32,7 +32,7 @@ const AuthForm = () => {
           "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDW2eQx6V9JvNmLY5lrvNFn6Fc1D0cmU5Y",
           {
             method: "POST",
-            body:JSON.stringify({
+            body: JSON.stringify({
               email: enteredEmail,
               password: enteredPassword,
               returnSecureToken: true,
@@ -41,15 +41,15 @@ const AuthForm = () => {
               "Content-Type": "application/json",
             },
           }
-          );
+        );
 
-
-          var data = await response.json();
-          if (response.ok) {
-            authCtx.login(data.idToken);
-          } else {
-            throw new Error("Authentication failed");
-          }
+        var data = await response.json();
+        if (response.ok) {
+          authCtx.login(data.idToken);
+          navigate('/profile'); // redirects user to the path '/'
+        } else {
+          throw new Error("Authentication failed");
+        }
       } else {
         const response = await fetch(
           "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDW2eQx6V9JvNmLY5lrvNFn6Fc1D0cmU5Y",
@@ -77,7 +77,6 @@ const AuthForm = () => {
       }
     }
     setIsLoader(false);
-
   };
   return (
     <section className={classes.auth}>
