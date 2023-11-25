@@ -46,7 +46,7 @@ const AuthForm = () => {
         var data = await response.json();
         if (response.ok) {
           authCtx.login(data.idToken);
-          navigate('/profile'); // redirects user to the path '/'
+          navigate('/profile'); // redirects user to the path '/profile'
         } else {
           throw new Error("Authentication failed");
         }
