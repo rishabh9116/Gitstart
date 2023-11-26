@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import classes from "./AuthForm.module.css";
 import { json } from "react-router-dom";
 import AuthContext from "../../store/auth-context";
+import React from 'react';
 
 const AuthForm = () => {
   const emailInputRef = useRef();
@@ -35,7 +36,7 @@ const AuthForm = () => {
             body: JSON.stringify({
               email: enteredEmail,
               password: enteredPassword,
-              returnSecureToken: true,
+              returnSecureToken: false,
             }),
             headers: {
               "Content-Type": "application/json",
@@ -45,6 +46,10 @@ const AuthForm = () => {
 
         var data = await response.json();
         if (response.ok) {
+          
+          data.expiresIn = "300s";
+          console.log("data=",data);
+
           authCtx.login(data.idToken);
           navigate('/profile'); // redirects user to the path '/profile'
         } else {
