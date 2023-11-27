@@ -13,6 +13,7 @@ import About from './components/pages/About';
 import Store from './components/pages/Store';
 import Contact from './components/pages/Contact';
 import ProductDetail from './components/ProductDetail';
+import Login from './components/pages/Login';
 
 
 
@@ -38,8 +39,9 @@ let App=()=> {
     
      <Routes>
       <Route path='/' element={<Home />} />
-      <Route path="/about" element={<About />}></Route>
+      <Route path="/about" element={<About />} />
       <Route path='/store'  element={<Store />} />
+      <Route path='/login' element={<Login />} />
       <Route path='/contactUs' element={<Contact />}  /> 
       <Route path='/products/:productId' element={<ProductDetail />}/>
      </Routes>

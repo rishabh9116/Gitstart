@@ -20,6 +20,10 @@ const NavBar = (props) => {
           </Navbar.Brand>
           <Navbar.Brand>
             {" "}
+            <NavLink to="/login">Login</NavLink>{" "}
+          </Navbar.Brand>
+          <Navbar.Brand>
+            {" "}
             <NavLink to="/contactUs">Contact Us</NavLink>{" "}
           </Navbar.Brand>
           <Navbar.Brand>
