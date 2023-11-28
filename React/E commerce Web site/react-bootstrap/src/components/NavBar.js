@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Container, Navbar } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 import NavBarCartButton from "./NavBarCartButton";
+import AuthContext from "../store/auth-context";
 const NavBar = (props) => {
+  const authCtx = useContext(AuthContext);
   return (
     <div>
       <Navbar bg="dark" expand="sm" variant="dark">
