@@ -31,6 +31,7 @@ const NavBar = (props) => {
           <Navbar.Brand>
             <NavBarCartButton onClick={props.onShowCart} />
           </Navbar.Brand>
+          <button onClick={() => authCtx.logout()}>Logout</button>
         </Container>
       </Navbar>
     </div>

@@ -13,6 +13,32 @@ const ProductItem = ({ title, price, imageUrl }) => {
       price: price,
       amount: 1,
     });
+
+    const postData = {
+      title: title,
+      imageUrl: imageUrl,
+      price: price,
+      amount: 1,
+    }
+    fetch("https://crudcrud.com/api/72f92d5c160f4249bc7a2a0ac2d5999a/cartabcgmailcom",{
+      method: 'POST',
+      headers: {
+        'Content-type' : 'application/json',
+      },
+      body: JSON.stringify(postData),
+    }).then(res => {
+      if(!res.ok) {
+        throw new Error (`HTTP error! Status: ${res.status}`);
+      }
+      return res.json();
+    })
+    .then(data => {
+
+      console.log('POST request successful:',data);
+    })
+    .catch(error => {
+      //  
+    })
   };
 
   return (

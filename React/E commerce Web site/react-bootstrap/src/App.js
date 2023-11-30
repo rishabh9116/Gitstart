@@ -16,16 +16,32 @@ import ProductDetail from "./components/ProductDetail";
 import Login from "./components/pages/Login";
 import Protected from "./components/pages/Protected";
 import AuthContext from "./store/auth-context";
-
+import CartContext from "./store/cart-context";
 let App = () => {
   const [cartIsShown, setCartIsShown] = useState(false);
 
   const authCtx = useContext(AuthContext);
+  const cartCtx = useContext(CartContext);
   const hideCartHandler = () => {
     setCartIsShown(false);
   };
 
   const showCartHandler = () => {
+    
+  
+    fetch("https://crudcrud.com/api/72f92d5c160f4249bc7a2a0ac2d5999a/cartabcgmailcom").then(res => {
+      if(!res.ok) {
+        throw new Error (`HTTP error! Status: ${res.status}`);
+      }
+      return res.json();
+    })
+    .then(data => {
+      cartCtx.items = data;
+      console.log('GET request successful:', data[0]);
+    })
+    .catch(error => {
+      //  
+    })
     setCartIsShown(true);
   };
   return (
